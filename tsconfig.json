@@ -19,8 +19,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "strictNullChecks": false,
-    "semicolon": [true, "always"]
+    "strictNullChecks": false
   },
   "include": [
     "src"
