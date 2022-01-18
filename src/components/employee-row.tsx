@@ -1,7 +1,7 @@
 import Employee from "../dtos/employee";
 
 export default function EmployeeRow(props:Employee){
-    const {id, fName, lName, isManager, uName, pass} = props;
+    const {id, fName, lName, isManager} = props;
 
     return(
         <tr>

@@ -5,12 +5,6 @@ import axios from "axios";
 
 export default function EmployeeTable(){
 
-    // const employees:Employee[] = [
-    //                                 {id:"100", fName:"Jimmy", lName:"Jumbo", uName:"doesn't matter", pass:"none", isManager:false},
-    //                                 {id:"200", fName:"Sean", lName:"Schwartz", uName:"does matter", pass:"none", isManager:true},
-    //                                 {id:"300", fName:"John", lName:"Snow", uName:"missing", pass:"you know nothing", isManager:false},
-    //                             ];
-
     const [employees,setEmployees] = useState([]);
 
     async function getEmployees(){

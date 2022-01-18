@@ -23,6 +23,7 @@ export default function LoginPage(props:{updateUser:Function}){
             body: JSON.stringify(loginPayloadInfo),
             headers: {'content-type': 'application/json'}
         });
+        
         const employee:Employee | Error = await response.json();
         
         if(employee instanceof Error){
