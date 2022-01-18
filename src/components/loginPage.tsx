@@ -23,12 +23,17 @@ export default function LoginPage(props:{updateUser:Function}){
             body: JSON.stringify(loginPayloadInfo),
             headers: {'content-type': 'application/json'}
         });
-        const employee:Employee = await response.json();
-
-        props.updateUser({username:employee.uName, pass:employee.pass, isManager:employee.isManager});
-        sessionStorage.setItem("username",employee.uName);
-        sessionStorage.setItem("pass", employee.pass);
-        sessionStorage.setItem("isManager", String(employee.isManager));
+        const employee:Employee | Error = await response.json();
+        
+        if(employee instanceof Error){
+            alert("Login Failed");
+        }
+        else{
+            props.updateUser({username:employee.uName, pass:employee.pass, isManager:employee.isManager});
+            sessionStorage.setItem("username",employee.uName);
+            sessionStorage.setItem("pass", employee.pass);
+            sessionStorage.setItem("isManager", String(employee.isManager));
+        }
     }
 
     return(
