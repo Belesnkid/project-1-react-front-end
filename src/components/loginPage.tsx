@@ -2,6 +2,7 @@ import axios from "axios";
 import { json } from "express";
 import { useRef } from "react";
 import Employee from "../dtos/employee";
+import './CSS/login.css';
 
 export default function LoginPage(props: { updateUser: Function }) {
 
@@ -39,13 +40,19 @@ export default function LoginPage(props: { updateUser: Function }) {
 
     return (
         <>
-            <h1>Login Page</h1>
-            <label htmlFor="uNameInput">Username</label>
-            <input type="text" id="uNameInput" placeholder="Username" ref={uNameInput} />
-            <br />
-            <label htmlFor="passInput">Password</label>
-            <input type="password" id="passInput" ref={passInput} />
-            <br />
+            <div className='page'>
+                <h1>Login Page</h1>
+            </div>
+            <div className="page">
+                <label htmlFor="uNameInput">Username</label>
+                <input type="text" id="uNameInput" placeholder="Username" ref={uNameInput} />
+            </div>
+            <div className="page">
+                <label htmlFor="passInput">Password</label>
+                <input type="password" id="passInput" ref={passInput} />
+            </div>
+            <div className="page">
             <button onClick={login}>Login</button>
+            </div>
         </>)
 }

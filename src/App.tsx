@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EmployeeTable from './components/employee-table';
 import LoginPage from './components/loginPage';
+import ReimbursementRow from './components/reimbursement-row';
 import ReimbursementTable from './components/reimbusement-table';
 
 export function logout() {
@@ -14,7 +15,10 @@ function App() {
 
   return (<>
     {!user.username ? <LoginPage updateUser={setUser} />
-      : user.isManager ? <EmployeeTable />
+      : user.isManager ? <>
+        <EmployeeTable/>
+        <ReimbursementTable/>
+      </>
         : <>
           <p>Employee view</p>
           <button onClick={logout}>Logout</button></>}
