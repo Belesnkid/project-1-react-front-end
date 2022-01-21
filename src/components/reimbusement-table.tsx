@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 import ReimbursementRow from "./reimbursement-row";
+import { logout } from "../App";
 
 export default function ReimbursementTable(){
 
@@ -12,11 +13,6 @@ export default function ReimbursementTable(){
     // ];
 
     const [list,setList] = useState([]);
-
-    function logout(){
-        sessionStorage.clear();
-        window.location.reload();
-    }
 
     async function getReimbursements(){
         const response = await axios.get('http://localhost:3001/reimbursements');

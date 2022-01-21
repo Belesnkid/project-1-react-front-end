@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Employee from "../dtos/employee";
 import EmployeeRow from "./employee-row";
 import axios from "axios";
+import { logout } from "../App";
 
 export default function EmployeeTable(){
 
@@ -18,11 +19,6 @@ export default function EmployeeTable(){
     }, []);
 
     const tableRows = employees.map(e => <EmployeeRow key={e.id} {...e}/>);
-
-    function logout(){
-        sessionStorage.clear();
-        window.location.reload();
-    }
     
     return(<>
         <button onClick={logout}>Logout</button>
