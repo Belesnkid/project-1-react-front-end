@@ -14,13 +14,12 @@ function App() {
 
   return (<>
     {!user.username ? <LoginPage updateUser={setUser} />
-    : user.isManager ? <EmployeeTable />
-    : <>
-      <p>Employee view</p>
-      <button onClick={logout}>Logout</button></>}
-      {/* <ReimbursementTable/> */}
-    </>
-    
+      : user.isManager ? <EmployeeTable />
+        : <>
+          <p>Employee view</p>
+          <button onClick={logout}>Logout</button></>}
+    {/* <ReimbursementTable/> */}
+  </>
   );
 }
 

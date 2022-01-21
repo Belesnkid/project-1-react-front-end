@@ -6,12 +6,6 @@ import { logout } from "../App";
 
 export default function ReimbursementTable(){
 
-    // const initialRows:ReimbursementRequest[] = [
-    //     {id:"101", employeeId:"103", amount:10, pending:false},
-    //     {id:"102", employeeId:"101", amount:1000, pending:true},
-    //     {id:"103", employeeId:"102", amount:1000000, pending:true}
-    // ];
-
     const [list,setList] = useState([]);
 
     async function getReimbursements(){
