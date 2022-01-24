@@ -4,13 +4,18 @@ import EmployeeRow from "./employee-row";
 import axios from "axios";
 import { logout } from "../App";
 
-export default function EmployeeTable(){
+export default function ManagerEmployeeTable(props:{user:string}){
 
     const [employees,setEmployees] = useState([]);
 
     async function getEmployees(){
         const response = await axios.get('http://localhost:3001/employees');
         const employees:Employee[] = await response.data;
+        for(let e of employees){
+            if(e.uName === props.user.toString()){
+                employees.splice(employees.indexOf(e),1);
+            }
+        }
         setEmployees(employees);
     }
 
@@ -21,7 +26,6 @@ export default function EmployeeTable(){
     const tableRows = employees.map(e => <EmployeeRow key={e.id} {...e}/>);
     
     return(<>
-        <button onClick={logout}>Logout</button>
         <h3>Employee Table</h3>
         <table>
             <thead>

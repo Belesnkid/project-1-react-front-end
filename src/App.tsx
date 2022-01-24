@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import EmployeeTable from './components/employee-table';
+import ManagerEmployeeTable from './components/manager-employee-table';
 import LoginPage from './components/loginPage';
-import ReimbursementRow from './components/reimbursement-row';
-import ReimbursementTable from './components/reimbusement-table';
+import ManagerReimbursementTable from './components/manager-reimbusement-table';
+import PersonalReimbursementTable from './components/personal-reimbursement-table';
+import './components/CSS/login.css'
 
 export function logout() {
   sessionStorage.clear();
@@ -11,18 +12,26 @@ export function logout() {
 
 function App() {
 
-  const [user, setUser] = useState({ username: sessionStorage.getItem("username"), password: sessionStorage.getItem("pass"), isManager: Boolean(sessionStorage.getItem("isManager")) });
+  const [user, setUser] = useState({ username: sessionStorage.getItem("username"), id: sessionStorage.getItem("ID"), isManager: Boolean(sessionStorage.getItem("isManager")) });
 
   return (<>
     {!user.username ? <LoginPage updateUser={setUser} />
       : user.isManager ? <>
-        <EmployeeTable/>
-        <ReimbursementTable/>
+        <div className='page'>
+          <h1>Manager view</h1>
+          <button onClick={logout}>Logout</button>
+          <ManagerEmployeeTable user={user.username}/>
+          <ManagerReimbursementTable empID={user.id}/>
+          <PersonalReimbursementTable empID={user.id}/>
+        </div>
       </>
         : <>
-          <p>Employee view</p>
-          <button onClick={logout}>Logout</button></>}
-    {/* <ReimbursementTable/> */}
+          <div className='page'>
+            <h1>Employee view</h1>
+            <button onClick={logout}>Logout</button>
+            <PersonalReimbursementTable empID={user.id}/>
+          </div>
+          </>}
   </>
   );
 }
