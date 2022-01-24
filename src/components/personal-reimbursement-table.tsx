@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
-import ReimbursementRow from "./reimbursement-row";
+import ViewReimbursementRow from "./view-reimbursement-row";
 
 export default function PersonalReimbursementTable(props:{empID:string}){
     
@@ -17,7 +17,7 @@ export default function PersonalReimbursementTable(props:{empID:string}){
         getReimbursements();
     }, [])
 
-    const tableRows = list.map(r => <ReimbursementRow key={r.id} {...r}/>);
+    const tableRows = list.map(r => <ViewReimbursementRow key={r.id} {...r}/>);
 
     return(<>
         <h3>Your Reimbursements Table</h3>

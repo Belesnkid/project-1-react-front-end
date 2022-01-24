@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
-import ReimbursementRow from "./reimbursement-row";
-import { logout } from "../App";
-import { EIDRM } from "constants";
+import ApprovalReimbursementRow from "./approve-reimbursement-row";
 
 export default function ManagerReimbursementTable(props: {empID:string}){
 
@@ -24,7 +22,7 @@ export default function ManagerReimbursementTable(props: {empID:string}){
         getReimbursements();
     }, [])
 
-    const tableRows = list.map(r => <ReimbursementRow key={r.id} {...r}/>);
+    const tableRows = list.map(r => <ApprovalReimbursementRow key={r.id} {...r} refresh={getReimbursements}/>);
 
     return(<>
         <h3>Reimbursements Table</h3>
@@ -34,7 +32,6 @@ export default function ManagerReimbursementTable(props: {empID:string}){
                     <th>Request ID</th>
                     <th>Employee ID</th>
                     <th>Amount Requested</th>
-                    <th>Pending</th>
                     <th>Approved</th>
                     <th></th>
                 </tr>

@@ -9,5 +9,6 @@ export default function EmployeeRow(props:Employee){
             <td>{lName}</td>
             <td>{id}</td>
             <td>{isManager? "Yes": "No"}</td>
+            <td><button>Details</button></td>
         </tr>);
 }

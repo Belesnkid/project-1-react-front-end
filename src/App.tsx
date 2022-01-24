@@ -14,25 +14,27 @@ function App() {
 
   const [user, setUser] = useState({ username: sessionStorage.getItem("username"), id: sessionStorage.getItem("ID"), isManager: Boolean(sessionStorage.getItem("isManager")) });
 
-  return (<>
-    {!user.username ? <LoginPage updateUser={setUser} />
-      : user.isManager ? <>
-        <div className='page'>
-          <h1>Manager view</h1>
-          <button onClick={logout}>Logout</button>
-          <ManagerEmployeeTable user={user.username}/>
-          <ManagerReimbursementTable empID={user.id}/>
-          <PersonalReimbursementTable empID={user.id}/>
-        </div>
-      </>
-        : <>
+  return (
+    <>
+      {!user.username ? <LoginPage updateUser={setUser} />
+        : user.isManager ? <>
           <div className='page'>
-            <h1>Employee view</h1>
+            <h1>Manager view</h1>
             <button onClick={logout}>Logout</button>
+            <ManagerEmployeeTable user={user.username}/>
+            <ManagerReimbursementTable empID={user.id}/>
             <PersonalReimbursementTable empID={user.id}/>
           </div>
-          </>}
-  </>
+        </>
+          : <>
+            <div className='page'>
+              <h1>Employee view</h1>
+              <button onClick={logout}>Logout</button>
+              <PersonalReimbursementTable empID={user.id}/>
+            </div>
+          </>
+      }
+    </>
   );
 }
 

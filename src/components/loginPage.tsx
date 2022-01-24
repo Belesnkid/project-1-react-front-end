@@ -11,7 +11,7 @@ export default function LoginPage(props: { updateUser: Function }) {
         const loginPayloadInfo = {
             username: uNameInput.current.value,
             pass: passInput.current.value
-        }
+        };
 
         const response = await fetch('http://localhost:3001/login', {
             method: 'PATCH',
@@ -21,7 +21,7 @@ export default function LoginPage(props: { updateUser: Function }) {
 
         const employee: Employee = await response.json();
 
-        if (response.status >= 400) {
+        if (!employee) {
             alert("Login Failed");
         } else {
             props.updateUser({ username: employee.uName, id: employee.id, isManager: employee.isManager });

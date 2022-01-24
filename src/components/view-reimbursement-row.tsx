@@ -1,6 +1,6 @@
 import ReimbursementRequest from "../dtos/reimbursement-request";
 
-export default function ReimbursementRow(props:ReimbursementRequest){
+export default function ViewReimbursementRow(props:ReimbursementRequest){
     const {id, employeeId, amount, pending, approved} = props;
 
     return(
@@ -13,5 +13,5 @@ export default function ReimbursementRow(props:ReimbursementRequest){
             <td>Pending</td> : <td>{approved? "Approved":"Denied"}</td>}
             <td><button>Details</button></td>
         </tr>
-    )
+    );
 }
