@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 
-export default function ApprovalReimbursementRow(props:ReimbursementRequest){
+export default function MViewReimbursementRow(props:ReimbursementRequest){
     
     const {employeeId, amount, approved} = props;
     const rid = props.id;

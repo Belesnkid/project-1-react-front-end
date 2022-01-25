@@ -1,6 +1,6 @@
 import ReimbursementRequest from "../dtos/reimbursement-request";
 
-export default function ViewReimbursementRow(props:ReimbursementRequest){
+export default function EViewReimbursementRow(props:ReimbursementRequest){
     const {id, employeeId, amount, pending, approved} = props;
 
     return(

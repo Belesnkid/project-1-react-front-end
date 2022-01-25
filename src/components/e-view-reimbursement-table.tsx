@@ -1,20 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
-import ApprovalReimbursementRow from "./approve-reimbursement-row";
+import EViewReimbursementRow from "./e-view-reimbursement-row";
 
-export default function ManagerReimbursementTable(props: {empID:string}){
-
+export default function EViewReimbursementTable(props:{empID:string}){
+    
     const [list,setList] = useState([]);
 
     async function getReimbursements(){
-        const response = await axios.get('http://localhost:3001/reimbursements');
+        const response = await axios.get(`http://localhost:3001/reimbursements/employee/${props.empID}`);
         const reimbursements:ReimbursementRequest[] = await response.data;
-        for(let r of reimbursements){
-            if(r.employeeId === props.empID){
-                reimbursements.splice(reimbursements.indexOf(r),1);
-            }
-        }
         setList(reimbursements);
     }
 
@@ -22,22 +17,23 @@ export default function ManagerReimbursementTable(props: {empID:string}){
         getReimbursements();
     }, [])
 
-    const tableRows = list.map(r => <ApprovalReimbursementRow key={r.id} {...r} refresh={getReimbursements}/>);
+    const tableRows = list.map(r => <EViewReimbursementRow key={r.id} {...r}/>);
 
     return(<>
-        <h3>Reimbursements Table</h3>
+        <h3>Your Reimbursements Table</h3>
         <table>
             <thead>
                 <tr>
                     <th>Request ID</th>
                     <th>Employee ID</th>
                     <th>Amount Requested</th>
+                    <th>Pending</th>
                     <th>Approved</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {tableRows}
+                {tableRows.length > 0? tableRows :<p>No Requests to Display</p>}
             </tbody>
         </table>
         <button onClick={getReimbursements}>Refresh List</button>

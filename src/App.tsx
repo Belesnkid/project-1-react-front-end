@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ManagerEmployeeTable from './components/manager-employee-table';
+import MViewEmployeeTable from './components/m-view-employee-table';
 import LoginPage from './components/loginPage';
-import ManagerReimbursementTable from './components/manager-reimbusement-table';
-import PersonalReimbursementTable from './components/personal-reimbursement-table';
+import MViewReimbursementTable from './components/m-view-reimbusement-table';
+import EViewReimbursementTable from './components/e-view-reimbursement-table';
 import './components/CSS/login.css'
 
 export function logout() {
@@ -21,16 +21,16 @@ function App() {
           <div className='page'>
             <h1>Manager view</h1>
             <button onClick={logout}>Logout</button>
-            <ManagerEmployeeTable user={user.username}/>
-            <ManagerReimbursementTable empID={user.id}/>
-            <PersonalReimbursementTable empID={user.id}/>
+            <MViewEmployeeTable user={user.username}/>
+            <MViewReimbursementTable empID={user.id}/>
+            <EViewReimbursementTable empID={user.id}/>
           </div>
         </>
           : <>
             <div className='page'>
               <h1>Employee view</h1>
               <button onClick={logout}>Logout</button>
-              <PersonalReimbursementTable empID={user.id}/>
+              <EViewReimbursementTable empID={user.id}/>
             </div>
           </>
       }

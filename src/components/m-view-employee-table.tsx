@@ -4,7 +4,7 @@ import EmployeeRow from "./employee-row";
 import axios from "axios";
 import { logout } from "../App";
 
-export default function ManagerEmployeeTable(props:{user:string}){
+export default function MViewEmployeeTable(props:{user:string}){
 
     const [employees,setEmployees] = useState([]);
 
