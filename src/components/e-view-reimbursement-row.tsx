@@ -11,7 +11,6 @@ export default function EViewReimbursementRow(props:ReimbursementRequest){
             <td>{pending? "Yes": "No"}</td>
             {approved === undefined?
             <td>Pending</td> : <td>{approved? "Approved":"Denied"}</td>}
-            <td><button>Details</button></td>
         </tr>
     );
 }

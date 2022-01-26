@@ -8,7 +8,7 @@ export default function MViewReimbursementTable(props: {empID:string}){
     const [list,setList] = useState([]);
 
     async function getReimbursements(){
-        const response = await axios.get('http://localhost:3001/reimbursements');
+        const response = await axios.get('http://localhost:3001/reimbursements/open');
         const reimbursements:ReimbursementRequest[] = await response.data;
         for(let r of reimbursements){
             if(r.employeeId === props.empID){
@@ -22,7 +22,7 @@ export default function MViewReimbursementTable(props: {empID:string}){
         getReimbursements();
     }, [])
 
-    const tableRows = list.map(r => <MViewReimbursementRow key={r.id} {...r}/>);
+    const tableRows = list.map(r => <MViewReimbursementRow key={r.id} {...r} refresh={getReimbursements}/>);
 
     return(<>
         <h3>Reimbursements Table</h3>
@@ -32,7 +32,7 @@ export default function MViewReimbursementTable(props: {empID:string}){
                     <th>Request ID</th>
                     <th>Employee ID</th>
                     <th>Amount Requested</th>
-                    <th>Approved</th>
+                    <th>Given Reason</th>
                     <th></th>
                 </tr>
             </thead>
@@ -40,6 +40,6 @@ export default function MViewReimbursementTable(props: {empID:string}){
                 {tableRows}
             </tbody>
         </table>
-        <button onClick={getReimbursements}>Refresh List</button>
+        <button onClick={() => getReimbursements()}>Refresh List</button>
     </>);
 }

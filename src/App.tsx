@@ -3,6 +3,7 @@ import LoginPage from './components/loginPage';
 import './components/CSS/login.css';
 import ManagerPage from './components/manager-page';
 import EmployeePage from './components/employee-page';
+import { Routes, Route } from 'react-router-dom';
 
 export function logout() {
   sessionStorage.clear();
@@ -13,16 +14,12 @@ function App() {
 
   const [user, setUser] = useState({ username: sessionStorage.getItem("username"), id: sessionStorage.getItem("ID"), isManager: Boolean(sessionStorage.getItem("isManager")) });
 
-  return (
-    <>
-      {!user.username ? <LoginPage updateUser={setUser} />
-        : user.isManager ? <>
-          <ManagerPage username={user.username} id={user.id}/>
-        </>
-          : <>
-            <EmployeePage id={user.id}/>
-          </>
-      }
+  return (<>
+    <Routes>
+      <Route path="/*" element={user.username? user.isManager? <ManagerPage id={user.id} username={user.username}/>
+      : <EmployeePage id={user.id}/> 
+      : <LoginPage  updateUser={setUser}/>}/>
+    </Routes>
     </>
   );
 }

@@ -3,6 +3,7 @@ import EViewReimbursementTable from "./e-view-reimbursement-table";
 import ReimbursementForm from "./reimbursement-form";
 import './CSS/login.css';
 import { useNavigate, Routes, Route } from "react-router-dom";
+import EViewReimbursementDetails from "./e-view-reimbursement-details";
 
 export default function EmployeePage(props:{id:string}){
     

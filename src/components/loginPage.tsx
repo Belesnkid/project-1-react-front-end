@@ -42,7 +42,7 @@ export default function LoginPage(props: { updateUser: Function }) {
             </div>
             <div className="page">
                 <label htmlFor="passInput">Password</label>
-                <input type="password" id="passInput" ref={passInput} />
+                <input type="password" id="passInput" placeholder="" ref={passInput} />
             </div>
             <div className="page">
             <button onClick={login}>Login</button>

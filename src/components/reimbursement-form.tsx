@@ -7,8 +7,8 @@ export default function ReimbursementForm(props:{empId:string}){
     
     //method not tested yet
     async function validateAndSubmit(){
-        if(amountInput.current.value === '' || reasonInput.current.value === ''){
-            alert('One or more fields were left empty.')
+        if(amountInput.current.value === '' || reasonInput.current.value === '' || Number(amountInput.current.value) < 1){
+            alert('Errors in form.')
         }
         else{
             const payload = {
@@ -40,9 +40,9 @@ export default function ReimbursementForm(props:{empId:string}){
             <hr/>
             <p>Employee ID: {props.empId}</p>
             <label htmlFor="amountInput">Amount:</label>
-            <input type="number" id="amountInput" placeholder="10"/>
+            <input type="number" ref={amountInput} id="amountInput" min={1} placeholder="10"/>
             <label htmlFor="reasonInput">Reason:</label>
-            <input type="text" id="reasonInput" placeholder="Office Supplies"/>
+            <input type="text" ref={reasonInput} id="reasonInput" placeholder="Office Supplies"/>
             <button onClick={validateAndSubmit}>Submit Request</button>
         </div>
     </>)
