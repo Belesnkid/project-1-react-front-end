@@ -1,6 +1,6 @@
 import Employee from "../dtos/employee";
 
-export default function EmployeeRow(props:Employee){
+export default function MViewEmployeeRow(props:Employee){
     const {id, fName, lName, isManager} = props;
 
     return(

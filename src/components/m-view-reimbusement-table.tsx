@@ -22,7 +22,7 @@ export default function MViewReimbursementTable(props: {empID:string}){
         getReimbursements();
     }, [])
 
-    const tableRows = list.map(r => <MViewReimbursementRow key={r.id} {...r} refresh={getReimbursements}/>);
+    const tableRows = list.map(r => <MViewReimbursementRow key={r.id} {...r}/>);
 
     return(<>
         <h3>Reimbursements Table</h3>
