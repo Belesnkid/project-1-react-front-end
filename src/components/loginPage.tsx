@@ -16,13 +16,14 @@ export default function LoginPage(props: { updateUser: Function }) {
         const response = await fetch('http://localhost:3001/login', {
             method: 'PATCH',
             body: JSON.stringify(loginPayloadInfo),
-            headers: { 'content-type': 'application/json' }
+            headers: { 'content-type': 'application/json',
+                        'Accept': 'application/json' }
         });
 
         const employee: Employee = await response.json();
 
-        if (!employee) {
-            alert("Login Failed");
+        if (!employee.id) {
+            alert("Login Failed\nUsername or Password do not match.");
         } else {
             props.updateUser({ username: employee.uName, id: employee.id, isManager: employee.isManager });
             sessionStorage.setItem("username", employee.uName);

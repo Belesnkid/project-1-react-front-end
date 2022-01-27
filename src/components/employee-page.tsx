@@ -3,7 +3,6 @@ import EViewReimbursementTable from "./e-view-reimbursement-table";
 import ReimbursementForm from "./reimbursement-form";
 import './CSS/login.css';
 import { useNavigate, Routes, Route } from "react-router-dom";
-import EViewReimbursementDetails from "./e-view-reimbursement-details";
 
 export default function EmployeePage(props:{id:string}){
     
@@ -13,7 +12,7 @@ export default function EmployeePage(props:{id:string}){
         <div className='page'>
             <button onClick={logout}>Logout</button>
             <h1>Employee view</h1>
-            <hr/>
+            <hr></hr>
             <br/>
             <h5>What would you like to do?</h5>
             <br/>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 import MViewReimbursementRow from "./m-view-reimbursement-row";
 
-export default function MViewReimbursementTable(props: {empID:string}){
+export default function MViewReimbursementTable(props:{empID:string}){
 
     const [list,setList] = useState([]);
 
@@ -22,7 +22,7 @@ export default function MViewReimbursementTable(props: {empID:string}){
         getReimbursements();
     }, [])
 
-    const tableRows = list.map(r => <MViewReimbursementRow key={r.id} {...r} refresh={getReimbursements}/>);
+    const tableRows = list.map(r => <MViewReimbursementRow key={r.id} r={r} refresh={getReimbursements}/>);
 
     return(<>
         <h3>Reimbursements Table</h3>

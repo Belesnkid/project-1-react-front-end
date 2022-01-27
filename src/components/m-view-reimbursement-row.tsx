@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 
-export default function MViewReimbursementRow(r:ReimbursementRequest, refresh:Function){
+export default function MViewReimbursementRow(props:{r:ReimbursementRequest, refresh:Function}){
     
-    const {employeeId, amount, approved} = r;
-    const rid = r.id;
+    const request:ReimbursementRequest = props.r;
+    const rid = request.id;
+    const refresh = props.refresh;
     
     const manReasonInput = useRef(null);
 
@@ -12,7 +13,7 @@ export default function MViewReimbursementRow(r:ReimbursementRequest, refresh:Fu
         if(!manReasonInput.current.value){
             alert("Please enter a reason.")
         } else {
-            let update:ReimbursementRequest = {...r};
+            let update:ReimbursementRequest = {...request};
             update.manReason = manReasonInput.current.value;
             update.pending = false;
             update.approved = true;
@@ -21,7 +22,7 @@ export default function MViewReimbursementRow(r:ReimbursementRequest, refresh:Fu
                 body: JSON.stringify(update),
                 headers: { 'content-type': 'application/json' }
             });
-            alert("Approved, refresh the list to see changes");
+            alert("Request Successfully Approved!\nrefresh the list to see changes");
             refresh();
         }
     }
@@ -30,16 +31,16 @@ export default function MViewReimbursementRow(r:ReimbursementRequest, refresh:Fu
         if(!manReasonInput.current.value){
             alert("Please enter a reason.")
         } else {
-            let update:ReimbursementRequest = {...r};
+            let update:ReimbursementRequest = {...request};
             update.manReason = manReasonInput.current.value;
             update.pending = false;
-            update.approved = true;
+            update.approved = false;
             const response = await fetch('http://localhost:3001/reimbursements', {
                 method: 'PATCH',
                 body: JSON.stringify(update),
                 headers: { 'content-type': 'application/json' }
             });
-            alert("Denied, refresh the list to see changes");
+            alert("Request Successfully Denied!\nrefresh the list to see changes");
             refresh();
         }
     }
@@ -47,9 +48,9 @@ export default function MViewReimbursementRow(r:ReimbursementRequest, refresh:Fu
     return(
         <tr>
             <td>{rid}</td>
-            <td>{employeeId}</td>
-            <td>{amount}</td>
-            <td>{r.empReason? r.empReason: "No Reason Given"}</td>
+            <td>{request.employeeId}</td>
+            <td>{request.amount}</td>
+            <td>{request.empReason? request.empReason: "No Reason Given"}</td>
             <td><input type="text" ref={manReasonInput} id="manReasonInput" placeholder="Reason"></input></td>
             <td><button onClick={() => approve()}>Approve</button>
             <button onClick={() => deny()}>Deny</button></td>
