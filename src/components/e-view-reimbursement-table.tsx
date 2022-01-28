@@ -20,7 +20,7 @@ export default function EViewReimbursementTable(props:{empID:string}){
             setList(reimbursements);
         })()
      
-    }, [])
+    }, [props.empID])
 
     const tableRows = list.map(r => <EViewReimbursementRow key={r.id} {...r}/>);
 
