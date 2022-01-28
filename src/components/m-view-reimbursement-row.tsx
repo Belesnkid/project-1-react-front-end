@@ -17,7 +17,7 @@ export default function MViewReimbursementRow(props:{r:ReimbursementRequest, ref
             update.manReason = manReasonInput.current.value;
             update.pending = false;
             update.approved = true;
-            const response = await fetch('http://localhost:3001/reimbursements', {
+            await fetch('http://localhost:3001/reimbursements', {
                 method: 'PATCH',
                 body: JSON.stringify(update),
                 headers: { 'content-type': 'application/json' }
@@ -35,7 +35,7 @@ export default function MViewReimbursementRow(props:{r:ReimbursementRequest, ref
             update.manReason = manReasonInput.current.value;
             update.pending = false;
             update.approved = false;
-            const response = await fetch('http://localhost:3001/reimbursements', {
+            await fetch('http://localhost:3001/reimbursements', {
                 method: 'PATCH',
                 body: JSON.stringify(update),
                 headers: { 'content-type': 'application/json' }
