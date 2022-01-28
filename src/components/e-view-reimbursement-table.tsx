@@ -7,17 +7,15 @@ export default function EViewReimbursementTable(props:{empID:string}){
     
     const [list,setList] = useState([]);
 
-    const getReimbursements = useCallback(() =>{
-        let reimbursements:ReimbursementRequest[] = [];
-        axios.get(`http://localhost:3001/reimbursements/employee/${props.empID}`).then(response => {reimbursements = response.data;});
+    async function getReimbursements(){
+        const response = await axios.get(`http://localhost:3001/reimbursements/employee/${props.empID}`);
+        const reimbursements:ReimbursementRequest[] = await response.data;
         setList(reimbursements);
-    },[]);{
-        
     }
 
     useEffect(() => {
         getReimbursements();
-    }, [useCallback(getReimbursements,[])])
+    }, [useCallback(getReimbursements, [list])])
 
     const tableRows = list.map(r => <EViewReimbursementRow key={r.id} {...r}/>);
 
