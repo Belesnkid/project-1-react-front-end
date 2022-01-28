@@ -7,12 +7,6 @@ export default function EViewReimbursementTable(props:{empID:string}){
     
     const [list,setList] = useState([]);
 
-    // async function getReimbursements(){
-    //     const response = await axios.get(`http://localhost:3001/reimbursements/employee/${props.empID}`);
-    //     const reimbursements:ReimbursementRequest[] = await response.data;
-    //     setList(reimbursements);
-    // }
-
     useEffect(() => {
         (async()=>{
             const response = await axios.get(`http://localhost:3001/reimbursements/employee/${props.empID}`);
@@ -41,6 +35,5 @@ export default function EViewReimbursementTable(props:{empID:string}){
                 {tableRows.length > 0? tableRows :<p>No Requests to Display</p>}
             </tbody>
         </table>
-        {/* <button onClick={getReimbursements}>Refresh List</button> */}
     </>);
 }
