@@ -15,7 +15,7 @@ export default function EViewReimbursementTable(props:{empID:string}){
 
     useEffect(() => {
         getReimbursements();
-    }, [useCallback(getReimbursements, [list])])
+    }, [useCallback(getReimbursements, [props.empID, getReimbursements])])
 
     const tableRows = list.map(r => <EViewReimbursementRow key={r.id} {...r}/>);
 
