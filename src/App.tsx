@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import LoginPage from './components/loginPage';
-import './components/CSS/login.css';
 import ManagerPage from './components/manager-page';
 import EmployeePage from './components/employee-page';
 import { Routes, Route } from 'react-router-dom';
@@ -16,7 +15,7 @@ function App() {
 
   return (<>
     <Routes>
-      <Route path="/*" element={user.username? user.isManager? <ManagerPage id={user.id} username={user.username}/>
+      <Route path="/*" element={user.username? user.isManager? <ManagerPage id={user.id} />
       : <EmployeePage id={user.id}/> 
       : <LoginPage  updateUser={setUser}/>}/>
     </Routes>

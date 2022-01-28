@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import Employee from "../dtos/employee";
-import './CSS/login.css';
+import './CSS/appStyles.css';
 
 export default function LoginPage(props: { updateUser: Function }) {
 

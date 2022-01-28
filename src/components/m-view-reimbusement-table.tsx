@@ -3,18 +3,13 @@ import { useEffect, useState } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 import MViewReimbursementRow from "./m-view-reimbursement-row";
 
-export default function MViewReimbursementTable(props:{empID:string}){
+export default function MViewReimbursementTable(){
 
     const [list,setList] = useState([]);
 
     async function getReimbursements(){
         const response = await axios.get('http://localhost:3001/reimbursements/open');
         const reimbursements:ReimbursementRequest[] = await response.data;
-        for(let r of reimbursements){
-            if(r.employeeId === props.empID){
-                reimbursements.splice(reimbursements.indexOf(r),1);
-            }
-        }
         setList(reimbursements);
     }
 

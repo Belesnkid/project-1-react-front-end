@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Employee from "../dtos/employee";
 import MViewEmployeeRow from "./m-view-employee-row";
 import axios from "axios";
-import { logout } from "../App";
 
 export default function MViewEmployeeTable(){
 

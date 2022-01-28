@@ -2,12 +2,12 @@ import { logout } from "../App";
 import EViewReimbursementTable from "./e-view-reimbursement-table";
 import MViewEmployeeTable from "./m-view-employee-table";
 import MViewReimbursementTable from "./m-view-reimbusement-table";
-import './CSS/login.css';
+import './CSS/appStyles.css';
 import SystemStatsPage from "./system-stats-page";
 import ReimbursementForm from "./reimbursement-form";
-import { Navigate, Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
-export default function ManagerPage(props:{id:string, username:string}){
+export default function ManagerPage(props:{id:string}){
     
     const navigate = useNavigate();
     
@@ -25,7 +25,7 @@ export default function ManagerPage(props:{id:string, username:string}){
             <Routes>
                 <Route path={"employees"} element={<MViewEmployeeTable/>}/>
                 <Route path={"myRequests"} element={<EViewReimbursementTable empID={props.id}/>}/>
-                <Route path={"review"} element={<MViewReimbursementTable empID={props.id}/>}/>
+                <Route path={"review"} element={<MViewReimbursementTable/>}/>
                 <Route path={"create"} element={<ReimbursementForm empId={props.id}/>}/>
                 <Route path={"stats"} element={<SystemStatsPage/>}/>
             </Routes>

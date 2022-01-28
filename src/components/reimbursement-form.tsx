@@ -14,7 +14,7 @@ export default function ReimbursementForm(props:{empId:string}){
             const payload = {
                 id: "",
                 employeeId: props.empId,
-                amount: amountInput.current.value,
+                amount: Number.parseInt(amountInput.current.value),
                 empReason: reasonInput.current.value,
                 pending: true
             }

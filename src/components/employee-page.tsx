@@ -1,7 +1,7 @@
 import { logout } from "../App";
 import EViewReimbursementTable from "./e-view-reimbursement-table";
 import ReimbursementForm from "./reimbursement-form";
-import './CSS/login.css';
+import './CSS/appStyles.css';
 import { useNavigate, Routes, Route } from "react-router-dom";
 
 export default function EmployeePage(props:{id:string}){

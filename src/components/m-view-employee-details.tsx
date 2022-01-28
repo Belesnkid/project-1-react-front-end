@@ -1,32 +1,68 @@
-import { useEffect, useState } from "react";
 import Employee from "../dtos/employee";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 
-export default function MViewEmployeeDetails(props:{empId:string}){
+export default function MViewEmployeeDetails(props:{emp:Employee, submittedRequests:ReimbursementRequest[]}){
+
     
-    const [employee,setEmployee] = useState<Employee>(null);
-    const [submittedRequests,setRequests] = useState<ReimbursementRequest[]>([]);
+    
+    return(<>
+            <h3>Details for {props.emp.fName} {props.emp.lName}</h3>
+            <p>ID: {props.emp.id}</p>
+            <p>Total Requests: {props.submittedRequests.length}</p>
+            <p>Total Open Requests: {numOpen()}</p>
+            <p>Highest Expenditure: {highest()}</p>
+            <p>Median Expenditure: {median()}</p>
+            <p>Average Expenditure: {average()}</p>
+            <br/>
+       
+    </>)
 
-    async function getEmployee(){
-        const response = await fetch(`http://localhost:3001/employees/${props.empId}`);
-        const employee:Employee = await response.json()
-        setEmployee(employee);
+    function sortArr(arr:ReimbursementRequest[]):ReimbursementRequest[]{
+        let myArr = arr;
+        myArr.sort(function(a,b){
+            return a.amount - b.amount;
+        })
+        return myArr;
     }
 
-    async function getRequests(){
-        const response = await fetch(`http://localhost:3001/reimbursements/employee/${props.empId}`);
-        const requests:ReimbursementRequest[] = await response.json();
-        setRequests(requests);
+    function median(){
+        if(props.submittedRequests.length === 0){
+            return "No Requests Submitted";
+        }
+        else if(props.submittedRequests.length === 1){
+            return props.submittedRequests[0].amount;
+        }
+        else if(props.submittedRequests.length === 2){
+            return ((props.submittedRequests[0].amount + props.submittedRequests[1].amount) / 2)
+        }
+        else if (props.submittedRequests.length >= 3){
+            const sorted = sortArr(props.submittedRequests);
+            if(sorted.length % 2 === 1){
+                return sorted[Math.floor(sorted.length/2)].amount;
+            }
+            else{
+                const rightIndex = Math.floor(sorted.length/2);
+                return ((sorted[rightIndex].amount + sorted[rightIndex-1].amount) / 2);
+            }
+        }
     }
 
-    useEffect(() => {
-        getEmployee();
-        getRequests();
-    }, []);
+    function average(){
+        if(props.submittedRequests.length > 0){
+            let sum = 0;
+            for(let r of props.submittedRequests){
+                sum += r.amount;
+            }
+            return Number.parseFloat((sum/props.submittedRequests.length).toFixed(2));
+        }
+        else{
+            return "No Requests Submitted";
+        }
+    }
 
     function numOpen(){
         let open = 0;
-        for (let r of submittedRequests){
+        for (let r of props.submittedRequests){
             if(r.pending){
                 open++;
             }
@@ -36,32 +72,11 @@ export default function MViewEmployeeDetails(props:{empId:string}){
 
     function highest(){
         let amt = 0;
-        for (let r of submittedRequests){
+        for (let r of props.submittedRequests){
             if(r.amount > amt){
                 amt = r.amount;
             }
         }
         return amt;
     }
-
-    function average(){
-        let sum = 0;
-        for(let r of submittedRequests){
-            sum += r.amount;
-        }
-        return (sum/submittedRequests.length);
-    }
-    
-    return(<>
-        {!employee? <h1>Loading...</h1>
-        : <>
-            <h3>Details for {employee.fName} {employee.lName}</h3>
-            <p>ID: {employee.id}</p>
-            <p>Total Requests: {submittedRequests.length}</p>
-            <p>Total Open Requests: {numOpen()}</p>
-            <p>Highest Expenditure: {highest()}</p>
-            <p>Average expenditure: {average()}</p>
-        </>
-        }
-    </>)
 }
