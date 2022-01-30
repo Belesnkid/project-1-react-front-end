@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { url } from "../App";
 import Employee from "../dtos/employee";
 import './CSS/appStyles.css';
 
@@ -13,7 +14,7 @@ export default function LoginPage(props: { updateUser: Function }) {
             pass: passInput.current.value
         };
 
-        const response = await fetch('http://localhost:3001/login', {
+        const response = await fetch(`${url}/login`, {
             method: 'PATCH',
             body: JSON.stringify(loginPayloadInfo),
             headers: { 'content-type': 'application/json',

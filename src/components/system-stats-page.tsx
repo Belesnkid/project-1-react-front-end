@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { url } from "../App";
 import Employee from "../dtos/employee";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 import './CSS/appStyles.css';
@@ -10,13 +11,13 @@ export default function SystemStatsPage(){
     const [submittedRequests,setRequests] = useState<ReimbursementRequest[]>([]);
 
     async function getEmployees(){
-        const response = await fetch(`http://localhost:3001/employees`);
+        const response = await fetch(`${url}/employees`);
         const employees:Employee[] = await response.json()
         setEmployees(employees);
     }
 
     async function getRequests(){
-        const response = await fetch(`http://localhost:3001/reimbursements`);
+        const response = await fetch(`${url}/reimbursements`);
         const requests:ReimbursementRequest[] = await response.json();
         setRequests(requests);
     }

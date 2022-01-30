@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { url } from "../App";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 import MViewReimbursementRow from "./m-view-reimbursement-row";
 
@@ -8,7 +9,7 @@ export default function MViewReimbursementTable(){
     const [list,setList] = useState([]);
 
     async function getReimbursements(){
-        const response = await axios.get('http://localhost:3001/reimbursements/open');
+        const response = await axios.get(`${url}/reimbursements/open`);
         const reimbursements:ReimbursementRequest[] = await response.data;
         setList(reimbursements);
     }

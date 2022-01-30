@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { url } from "../App";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 import EViewReimbursementRow from "./e-view-reimbursement-row";
+
 
 export default function EViewReimbursementTable(props:{empID:string}){
     
@@ -9,7 +11,7 @@ export default function EViewReimbursementTable(props:{empID:string}){
 
     useEffect(() => {
         (async()=>{
-            const response = await axios.get(`http://localhost:3001/reimbursements/employee/${props.empID}`);
+            const response = await axios.get(`${url}/reimbursements/employee/${props.empID}`);
             const reimbursements:ReimbursementRequest[] = await response.data;
             setList(reimbursements);
         })()

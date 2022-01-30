@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import Employee from "../dtos/employee";
 import MViewEmployeeRow from "./m-view-employee-row";
 import axios from "axios";
+import { url } from "../App";
 
 export default function MViewEmployeeTable(){
 
     const [employees,setEmployees] = useState([]);
 
     async function getEmployees(){
-        const response = await axios.get('http://localhost:3001/employees');
+        const response = await axios.get(`${url}/employees`);
         const employees:Employee[] = await response.data;
         setEmployees(employees);
     }

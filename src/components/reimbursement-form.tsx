@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { url } from "../App";
 
 export default function ReimbursementForm(props:{empId:string}){
 
@@ -18,7 +19,7 @@ export default function ReimbursementForm(props:{empId:string}){
                 empReason: reasonInput.current.value,
                 pending: true
             }
-            const response = await fetch('http://localhost:3001/reimbursements',{
+            const response = await fetch(`${url}/reimbursements`,{
                 method:'POST',
                 body: JSON.stringify(payload),
                 headers: { 'content-type': 'application/json' }

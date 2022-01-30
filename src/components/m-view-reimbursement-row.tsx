@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { url } from "../App";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 
 export default function MViewReimbursementRow(props:{r:ReimbursementRequest, refresh:Function}){
@@ -17,7 +18,7 @@ export default function MViewReimbursementRow(props:{r:ReimbursementRequest, ref
             update.manReason = manReasonInput.current.value;
             update.pending = false;
             update.approved = true;
-            await fetch('http://localhost:3001/reimbursements', {
+            await fetch(`${url}/reimbursements`, {
                 method: 'PATCH',
                 body: JSON.stringify(update),
                 headers: { 'content-type': 'application/json' }
@@ -35,7 +36,7 @@ export default function MViewReimbursementRow(props:{r:ReimbursementRequest, ref
             update.manReason = manReasonInput.current.value;
             update.pending = false;
             update.approved = false;
-            await fetch('http://localhost:3001/reimbursements', {
+            await fetch(`${url}/reimbursements`, {
                 method: 'PATCH',
                 body: JSON.stringify(update),
                 headers: { 'content-type': 'application/json' }

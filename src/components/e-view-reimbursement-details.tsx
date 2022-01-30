@@ -1,3 +1,4 @@
+import { url } from "../App";
 import { useEffect, useState } from "react";
 import ReimbursementRequest from "../dtos/reimbursement-request";
 
@@ -6,7 +7,7 @@ export default function EViewReimbursementDetails(props:{rId:string}){
     const [request,setRequest] = useState<ReimbursementRequest>(null);
 
     async function getRequest(){
-        const response = await fetch(`http://localhost:3001/reimbursements/${props.rId}`);
+        const response = await fetch(`${url}/reimbursements/${props.rId}`);
         const request:ReimbursementRequest = await response.json();
         setRequest(request);
     }

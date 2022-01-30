@@ -9,6 +9,8 @@ export function logout() {
   window.location.reload();
 }
 
+export const url = "https://djb-reimbursement-back-end.azurewebsites.net"
+
 function App() {
 
   const [user, setUser] = useState({ username: sessionStorage.getItem("username"), id: sessionStorage.getItem("ID"), isManager: Boolean(sessionStorage.getItem("isManager")) });
