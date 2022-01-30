@@ -36,18 +36,17 @@ export default function LoginPage(props: { updateUser: Function }) {
     return (
         <>
             <div className="page">
-                <h1>Login Page</h1>
-            </div>
-            <div className="page">
-                <label htmlFor="uNameInput">Username</label>
-                <input type="text" id="uNameInput" placeholder="Username" ref={uNameInput} />
-            </div>
-            <div className="page">
-                <label htmlFor="passInput">Password</label>
-                <input type="password" id="passInput" placeholder="" ref={passInput} />
-            </div>
-            <div className="page">
-            <button onClick={login}>Login</button>
+                <h1>XYZ Company Reimbursement System</h1>
+                <h2>Login Page</h2>
+                <div className="field">
+                    <label htmlFor="uNameInput">Username </label>
+                    <input className="input" type="text" id="uNameInput" placeholder="Username" ref={uNameInput} />
+                </div>
+                <div className="field">
+                    <label htmlFor="passInput">Password </label>
+                    <input className="input" type="password" id="passInput" placeholder="Password" ref={passInput} />
+                </div>
+                <button className="button" onClick={login}>Login</button>
             </div>
         </>)
 }

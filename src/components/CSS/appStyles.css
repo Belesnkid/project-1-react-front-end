@@ -1,7 +1,76 @@
+* {background-color: royalblue;}
+
 .page {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
+    color: white;
+}
+.field{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
     padding-bottom: 10px;
+    align-content: space-between;
+}
+.button{
+    background-color: royalblue;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: black;
+    padding: 10px 10px;
+}
+button:hover{
+    background-color: rgb(49, 89, 208);
+    border-radius: 35px;
+    transition: 0.35s;
+}
+.smallbutton{
+    background-color: royalblue;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: black;
+}
+smallbutton:hover{
+    background-color: rgb(49, 89, 208);
+    border-radius: 35px;
+    transition: 0.35s;
+}
+.logoutButton{
+    background-color: royalblue;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    align-self: flex-start;
+}
+.logoutButton:hover{
+    background-color: rgb(49, 89, 208);
+    border-radius: 20px;
+    transition: 0.35s;
+}
+.input{
+    background-color: white;
+}
+.center{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+td{
+    padding: 5px;
+    text-align: center;
+}
+
+p{
+    font-size: 18px;
+}
+
+h3{
+    font-size: 25px;
 }

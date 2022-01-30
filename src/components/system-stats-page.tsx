@@ -31,18 +31,26 @@ export default function SystemStatsPage(){
     
     return(<>
         <h1>System Data Statistics Page</h1>
-        <hr/>
 
-        <p>Total Employees: {totEmployees()}</p>
-        <p>Total Requests: {totRequests()}</p>
-        <p>Number of currently open requests: {numOpen()}</p>
-        <p>Highest Single Expenditure: {highest()}</p>
-        <p>System Average Requested Amount: {sysAverage()}</p>
-        <p>System Median Requested Amount: {sysMedian()}</p>
+        <div>
+            <hr/>
+            <div className="page">
+            <p>Total Employees: {totEmployees()}</p>
+            <p>Total Requests: {totRequests()}</p>
+            <p>Number of currently open requests: {numOpen()}</p>
+            <p>Highest Single Expenditure: {highest()}</p>
+            <p>System Average Requested Amount: {sysAverage()}</p>
+            <p>System Median Requested Amount: {sysMedian()}</p>
+            </div>
+        </div>
 
-        <hr/>
-        <h3>Details by Employee</h3>
-        {details}
+        <h2>Details by Employee</h2>
+        <div>
+            <hr/>
+            <div className="page">
+                {details}
+            </div>
+        </div>
     </>)
 
     function extractEmpRequests(requests:ReimbursementRequest[], eID:string):ReimbursementRequest[]{

@@ -52,9 +52,9 @@ export default function MViewReimbursementRow(props:{r:ReimbursementRequest, ref
             <td>{request.employeeId}</td>
             <td>{request.amount}</td>
             <td>{request.empReason? request.empReason: "No Reason Given"}</td>
-            <td><input type="text" ref={manReasonInput} id="manReasonInput" placeholder="Reason"></input></td>
-            <td><button onClick={() => approve()}>Approve</button>
-            <button onClick={() => deny()}>Deny</button></td>
+            <td><input className="input" type="text" ref={manReasonInput} id="manReasonInput" placeholder="Reason"></input></td>
+            <td><button className="smallbutton" onClick={() => approve()}>Approve</button>
+            <button className="smallbutton" onClick={() => deny()}>Deny</button></td>
         </tr>
     );
 }

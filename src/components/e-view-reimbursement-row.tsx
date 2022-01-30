@@ -1,12 +1,12 @@
 import ReimbursementRequest from "../dtos/reimbursement-request";
 
 export default function EViewReimbursementRow(props:ReimbursementRequest){
-    const {id, employeeId, amount, pending, approved} = props;
+    const {id, amount, pending, approved, empReason} = props;
 
     return(
         <tr>
             <td>{id}</td>
-            <td>{employeeId}</td>
+            <td>{empReason}</td>
             <td>{amount}</td>
             <td>{pending? "Yes": "No"}</td>
             {approved === undefined?

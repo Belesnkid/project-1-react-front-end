@@ -35,6 +35,5 @@ export default function MViewEmployeeTable(){
                 {tableRows}
             </tbody>
         </table>
-        <button onClick={getEmployees}>Refresh List</button>
     </>)
 }

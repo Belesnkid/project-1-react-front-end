@@ -36,6 +36,5 @@ export default function MViewReimbursementTable(){
                 {tableRows}
             </tbody>
         </table>
-        <button onClick={() => getReimbursements()}>Refresh List</button>
     </>);
 }

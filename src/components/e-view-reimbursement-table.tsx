@@ -26,7 +26,7 @@ export default function EViewReimbursementTable(props:{empID:string}){
             <thead>
                 <tr>
                     <th>Request ID</th>
-                    <th>Employee ID</th>
+                    <th>Employee Reason</th>
                     <th>Amount Requested</th>
                     <th>Pending</th>
                     <th>Approved</th>

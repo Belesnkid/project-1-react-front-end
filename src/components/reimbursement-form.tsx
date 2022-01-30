@@ -39,12 +39,20 @@ export default function ReimbursementForm(props:{empId:string}){
         <div>
             <h1>Reimbursement Request Submission Form</h1>
             <hr/>
-            <p>Employee ID: {props.empId}</p>
-            <label htmlFor="amountInput">Amount:</label>
-            <input type="number" ref={amountInput} id="amountInput" min={1} placeholder="10"/>
-            <label htmlFor="reasonInput">Reason:</label>
-            <input type="text" ref={reasonInput} id="reasonInput" placeholder="Office Supplies"/>
-            <button onClick={validateAndSubmit}>Submit Request</button>
+                <div className="page">
+                <p>Employee ID: {props.empId}</p>
+            </div>
+            <div className="field">
+                <label htmlFor="amountInput">Amount:</label>
+                <input className="input" type="number" ref={amountInput} id="amountInput" min={1} placeholder="10"/>
+            </div>
+            <div className="field">
+                <label htmlFor="reasonInput">Reason:</label>
+                <input className="input" type="text" ref={reasonInput} id="reasonInput" placeholder="Office Supplies"/>
+            </div>
+            <div className="field">
+                <button className="smallbutton" onClick={validateAndSubmit}>Submit Request</button>
+            </div>
         </div>
     </>)
 }

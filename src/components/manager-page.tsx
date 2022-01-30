@@ -13,15 +13,17 @@ export default function ManagerPage(props:{id:string}){
     
     return(<>
         <div className='page'>
-            <button onClick={logout}>Logout</button>
+            <button className="logoutButton" onClick={logout}>Logout</button>
             <h1>Manager view</h1>
-            <hr/>
-            <h5>What Do you want to do?</h5>
-            <button onClick={() => navigate("employees")}>View Employees</button>
-            <button onClick={() => navigate("myRequests")}>View My Requests</button>
-            <button onClick={() => navigate("review")}>Review Requests</button>
-            <button onClick={() => navigate("create")}>Submit a new Request</button>
-            <button onClick={() => navigate("stats")}>System Statistics</button>
+            <h3>Welcome {sessionStorage.getItem("username")}</h3>
+            <div className="field">
+                <button className="button" onClick={() => navigate("employees")}>View Employees</button>
+                <button className="button" onClick={() => navigate("myRequests")}>View My Requests</button>
+                <button className="button" onClick={() => navigate("review")}>Review Requests</button>
+                <button className="button" onClick={() => navigate("create")}>Submit a new Request</button>
+                <button className="button" onClick={() => navigate("stats")}>System Statistics</button>
+            </div>
+            
             <Routes>
                 <Route path={"employees"} element={<MViewEmployeeTable/>}/>
                 <Route path={"myRequests"} element={<EViewReimbursementTable empID={props.id}/>}/>

@@ -7,13 +7,17 @@ export default function MViewEmployeeDetails(props:{emp:Employee, submittedReque
     
     return(<>
             <h3>Details for {props.emp.fName} {props.emp.lName}</h3>
-            <p>ID: {props.emp.id}</p>
-            <p>Total Requests: {props.submittedRequests.length}</p>
-            <p>Total Open Requests: {numOpen()}</p>
-            <p>Highest Expenditure: {highest()}</p>
-            <p>Median Expenditure: {median()}</p>
-            <p>Average Expenditure: {average()}</p>
-            <br/>
+            <div>
+                <hr/>
+                <div className="center">
+                <p>ID: {props.emp.id}</p>
+                <p>Total Requests: {props.submittedRequests.length}</p>
+                <p>Total Open Requests: {numOpen()}</p>
+                <p>Highest Expenditure: {highest()}</p>
+                <p>Median Expenditure: {median()}</p>
+                <p>Average Expenditure: {average()}</p>
+                </div>
+            </div>
        
     </>)
 
